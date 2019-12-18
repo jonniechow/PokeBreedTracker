@@ -20,7 +20,7 @@ class App extends React.Component
                 pokemon_name: '',
                 key: '',
                 abilities: [],
-                ball: '',
+                ball: 'Poke Ball',
                 types: [],
                 stats: []
             }
@@ -34,25 +34,19 @@ class App extends React.Component
     handleInput(e)
     {
         e.preventDefault();
+        
         const target = e.target;
         const value = target.value;
         const name = target.name;
         console.log(name);
+
         var foundPokemon = this.state.data.filter(function (pokemon)
         {
             return pokemon.name === value;
         });
 
-        this.setState(
-            {
-                currentPoke: {
-                    [name]: value
-                }
-            }
-        );
 
-
-        console.log(foundPokemon);
+        // Found pokemon
         if (foundPokemon.length > 0)
         {
             this.setState(
@@ -61,26 +55,45 @@ class App extends React.Component
                         pokemon_name: value,
                         key: foundPokemon[0]['galar_dex'],
                         abilities: foundPokemon[0]['abilities'],
+                        ball: this.state.currentPoke.ball,
                         types: foundPokemon[0]['types'],
                         stats: foundPokemon[0]['base_stats']
                     }
                 }
             )
         }
+        // No valid pokemon, continue updating pokemon_name
         else
         {
+          if(name === "pokemon_name") {
             this.setState(
-                {
-                    currentPoke: {
-                        pokemon_name: value,
-                        key: '',
+              {
+                  currentPoke: {
+                      pokemon_name: value,
+                      key: '',
                         abilities: [],
-                        ball: '',
+                        ball: this.state.currentPoke.ball,
                         types: [],
                         stats: []
-                    }
-                }
-            );
+                  }
+              }
+          );
+          }
+          else if(name === "ball") {
+            this.setState(
+              {
+                  currentPoke: {
+                    pokemon_name: this.state.pokemon_name,
+                      ball: value,
+                      key: '',
+                        abilities: [],
+                        types: [],
+                        stats: []
+                  }
+              }
+          );
+          }
+
         }
 
     }
@@ -89,6 +102,7 @@ class App extends React.Component
     {
         e.preventDefault();
         const newPokemon = this.state.currentPoke;
+        console.log("Adding...");
         console.log(newPokemon);
         if (newPokemon.pokemon_name !== "")
         {
@@ -137,7 +151,7 @@ class App extends React.Component
                         }>
                             <div className="form-group">
                                 <label for="exampleFormControlInput1">Pokemon</label>
-                                <input className="form-control" placeholder="Grookey" name="name"
+                                <input className="form-control" placeholder="Grookey" name="pokemon_name"
                                     value={
                                         this.state.currentPoke.pokemon_name
                                     }
