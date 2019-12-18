@@ -20,12 +20,12 @@ function PokeTable(props) {
           {
               allPokemon.map(row => (
                   <tr >
-                      <td>{row.text}</td>
+                      <td>{row.name}</td>
                       <td>{row.key}</td>
                       <td>{row.abilities.map(ability => 
                                  <p> {ability}</p>
                       )}</td>
-                      <td>Empty</td>
+                      <td>{row.ball}</td>
                       <td>{row.types.map(type =>
                       {
                           if (type === "Grass") {
