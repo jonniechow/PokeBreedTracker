@@ -1,6 +1,7 @@
 import React from 'react';
 
-export default function PokeTable(props) {
+function PokeTable(props) {
+    const allPokemon = props.allPokemon;
     return (
         <table className="table">
         <thead>
@@ -17,10 +18,10 @@ export default function PokeTable(props) {
         </thead>
         <tbody>
           {
-              props.data.map(row => (
+              allPokemon.map(row => (
                   <tr >
-                      <td>{row.name}</td>
-                      <td>{row.id}</td>
+                      <td>{row.text}</td>
+                      <td>{row.key}</td>
                       <td>{row.abilities.map(ability => 
                                  <p> {ability}</p>
                       )}</td>
@@ -83,7 +84,7 @@ export default function PokeTable(props) {
                           }
                       }
                         )}</td>
-                      <td>{row.base_stats.map(stat =>
+                      <td>{row.stats.map(stat =>
                         <span>{stat} </span>
                         )}</td>
                   </tr>
@@ -93,3 +94,5 @@ export default function PokeTable(props) {
       </table>
     )
 }
+
+export default PokeTable;
