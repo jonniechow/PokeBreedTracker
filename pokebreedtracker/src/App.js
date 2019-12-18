@@ -20,6 +20,8 @@ class App extends React.Component
                 pokemon_name: '',
                 key: '',
                 abilities: [],
+                ability: '',
+                nature: 'Adamant',
                 ball: 'Poke Ball',
                 types: [],
                 stats: []
@@ -34,7 +36,7 @@ class App extends React.Component
     handleInput(e)
     {
         e.preventDefault();
-        
+
         const target = e.target;
         const value = target.value;
         const name = target.name;
@@ -55,6 +57,8 @@ class App extends React.Component
                         pokemon_name: value,
                         key: foundPokemon[0]['galar_dex'],
                         abilities: foundPokemon[0]['abilities'],
+                        ability: foundPokemon[0]['abilities'][0],
+                        nature: this.state.currentPoke.nature,
                         ball: this.state.currentPoke.ball,
                         types: foundPokemon[0]['types'],
                         stats: foundPokemon[0]['base_stats']
@@ -65,34 +69,74 @@ class App extends React.Component
         // No valid pokemon, continue updating pokemon_name
         else
         {
-          if(name === "pokemon_name") {
-            this.setState(
-              {
-                  currentPoke: {
-                      pokemon_name: value,
-                      key: '',
-                        abilities: [],
-                        ball: this.state.currentPoke.ball,
-                        types: [],
-                        stats: []
-                  }
-              }
-          );
-          }
-          else if(name === "ball") {
-            this.setState(
-              {
-                  currentPoke: {
-                    pokemon_name: this.state.pokemon_name,
-                      ball: value,
-                      key: '',
-                        abilities: [],
-                        types: [],
-                        stats: []
-                  }
-              }
-          );
-          }
+            if (name === "pokemon_name")
+            {
+                this.setState(
+                    {
+                        currentPoke: {
+                            pokemon_name: value,
+                            key: '',
+                            abilities: [],
+                            ability: this.state.currentPoke.ability,
+                            nature: this.state.currentPoke.nature,
+                            ball: this.state.currentPoke.ball,
+                            types: [],
+                            stats: []
+                        }
+                    }
+                );
+            }
+            else if (name === "ball")
+            {
+                this.setState(
+                    {
+                        currentPoke: {
+                            pokemon_name: this.state.currentPoke.pokemon_name,
+                            ball: value,
+                            key: this.state.currentPoke.key,
+                            abilities: this.state.currentPoke.abilities,
+                            ability: this.state.currentPoke.ability,
+                            nature: this.state.currentPoke.nature,
+                            types: this.state.currentPoke.types,
+                            stats: this.state.currentPoke.stats
+                        }
+                    }
+                );
+            }
+            else if (name === "poke_ability")
+            {
+                this.setState(
+                    {
+                        currentPoke: {
+                            pokemon_name: this.state.currentPoke.pokemon_name,
+                            ball: this.state.currentPoke.ball,
+                            key: this.state.currentPoke.key,
+                            abilities: this.state.currentPoke.abilities,
+                            ability: value,
+                            nature: this.state.currentPoke.nature,
+                            types: this.state.currentPoke.types,
+                            stats: this.state.currentPoke.stats
+                        }
+                    }
+                );
+            }
+            else if (name === "poke_nature")
+            {
+                this.setState(
+                    {
+                        currentPoke: {
+                            pokemon_name: this.state.currentPoke.pokemon_name,
+                            ball: this.state.currentPoke.ball,
+                            key: this.state.currentPoke.key,
+                            abilities: this.state.currentPoke.abilities,
+                            ability: this.state.currentPoke.ability,
+                            nature: value,
+                            types: this.state.currentPoke.types,
+                            stats: this.state.currentPoke.stats
+                        }
+                    }
+                );
+            }
 
         }
 
@@ -117,7 +161,9 @@ class App extends React.Component
                         pokemon_name: '',
                         key: '',
                         abilities: [],
-                        ball: '',
+                        ability: '',
+                        nature: 'Adamant',
+                        ball: 'Poke Ball',
                         types: [],
                         stats: []
                     }
@@ -131,9 +177,7 @@ class App extends React.Component
     {
         console.log("Current poke");
         console.log(this.state.currentPoke);
-        const abilities = this.state.currentPoke.abilities.map(ability => {
-            return <option>{ability}</option>
-        })
+
 
         return (
             <div className="App">
@@ -162,7 +206,13 @@ class App extends React.Component
 
                             <div className="form-group">
                                 <label for="exampleFormControlSelect1">Nature</label>
-                                <select className="form-control"  name="poke_nature">
+                                <select className="form-control" name="poke_nature"
+                                    value={
+                                        this.state.currentPoke.nature
+                                    }
+                                    onChange={
+                                        this.handleInput
+                                }>
                                     {
                                     natures.map(nature => {
                                         return <option>{
@@ -173,8 +223,19 @@ class App extends React.Component
                             </div>
                             <div className="form-group">
                                 <label for="exampleFormControlSelect1">Ability</label>
-                                <select className="form-control" value="the" name="poke_ability"
-                                    options={abilities}></select>
+                                <select className="form-control"
+                                    value={
+                                        this.state.currentPoke.ability
+                                    }
+                                    onChange={
+                                        this.handleInput
+                                    }
+                                    name="poke_ability">
+                                    {
+                                    this.state.currentPoke.abilities.map(ability => {
+                                        return <option>{ability}</option>
+                                })
+                                } </select>
                             </div>
                             <div className="form-group">
                                 <label for="exampleFormControlSelect1">Ball</label>

@@ -11,6 +11,7 @@ function PokeTable(props) {
                 Pokemon</button></th>
             <th scope="col">Galar Dex</th>
             <th scope="col">Abilities</th>
+            <th scope="col">Nature</th>
             <th scope="col">Balls</th>
             <th scope="col">Type</th>
             <th scope="col">Stats</th>
@@ -22,9 +23,8 @@ function PokeTable(props) {
                   <tr >
                       <td>{row.pokemon_name}</td>
                       <td>{row.key}</td>
-                      <td>{row.abilities.map(ability => 
-                                 <p> {ability}</p>
-                      )}</td>
+                      <td>{row.ability}</td>
+                      <td>{row.nature}</td>
                       <td>{row.ball}</td>
                       <td>{row.types.map(type =>
                       {
