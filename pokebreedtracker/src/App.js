@@ -195,15 +195,18 @@ class App extends React.Component
 
         return (
             <div className="App">
-                <h1>Poke Breed Tracker</h1>
+              <div className="jumbotron">
+              <h1 className="display-2">Poke Breed Tracker</h1>
+              </div>
+                
                 <div className="row">
 
-                    <div className="col-sm-10">
+                    <div className="col-sm-9" id="poketable">
                         <PokeTable allPokemon={
                             this.state.allPokemon
                         }></PokeTable>
                     </div>
-                    <div className="col-sm-2">
+                    <div className="col-sm-2" id="pokeadder">
                         <form onSubmit={
                             this.addPokemon
                         }>

@@ -1,10 +1,14 @@
 .App {
   text-align: center;
+  
 }
-
+body {
+  background-color: #24305e !important;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -44,4 +48,33 @@
 
 #bootstrap_cells td {
   vertical-align: middle;
+}
+
+.jumbotron{
+  background-color: #f76c6c !important;
+  color: white;
+  text-align: center;
+}
+
+#pokeadder {
+  background-color: #a8d0e6;
+  padding: 30px;
+  margin: auto;
+  border-radius: 15px;
+  font-family: Helvetica Neue;
+  font-weight: bold;
+}
+
+#poketable {
+  margin-left: auto;
+}
+.table {
+  background-color: #a8d0e6;
+}
+
+thead {
+  background-color: #374785 ;
+  color: white;
+  border-bottom: 3px solid #374785;
+  border-top: 3px solid #374785;
 }

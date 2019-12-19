@@ -8,11 +8,8 @@ function PokeTable(props)
             <thead>
                 <tr>
                     <th scope="col">
-                        <button class="btn btn-primary"
-                            onClick={
-                                () => props.sortBy('id')
-                        }>
-                            Pokemon</button>
+
+                        Pokemon
                     </th>
                     <th scope="col">Picture</th>
                     <th scope="col">Galar Dex</th>
@@ -23,13 +20,20 @@ function PokeTable(props)
                     <th scope="col">Stats</th>
                 </tr>
             </thead>
-            <tbody id="bootstrap_cells"> {
+            <tbody id="bootstrap_cells">
+                {
                 allPokemon.map(row => (
                     <tr>
                         <td>{
                             row.pokemon_name
                         }</td>
-                        <td><img src={row.img_src} alt="name" class="poke_pic"></img></td>
+                        <td>
+                            <img src={
+                                    row.img_src
+                                }
+                                alt="name"
+                                class="poke_pic"></img>
+                        </td>
                         <td>{
                             row.key
                         }</td>
