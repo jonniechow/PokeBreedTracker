@@ -19,6 +19,8 @@ class App extends React.Component
             currentPoke: {
                 pokemon_name: '',
                 key: '',
+                id: '',
+                img_src: '',
                 abilities: [],
                 ability: '',
                 nature: 'Adamant',
@@ -56,6 +58,8 @@ class App extends React.Component
                     currentPoke: {
                         pokemon_name: value,
                         key: foundPokemon[0]['galar_dex'],
+                        id: foundPokemon[0]['id'],
+                        img_src: "https://www.serebii.net/swordshield/pokemon/" + foundPokemon[0]['id'] + ".png",
                         abilities: foundPokemon[0]['abilities'],
                         ability: foundPokemon[0]['abilities'][0],
                         nature: this.state.currentPoke.nature,
@@ -76,6 +80,8 @@ class App extends React.Component
                         currentPoke: {
                             pokemon_name: value,
                             key: '',
+                            id: '',
+                            img_src: '',
                             abilities: [],
                             ability: this.state.currentPoke.ability,
                             nature: this.state.currentPoke.nature,
@@ -92,6 +98,8 @@ class App extends React.Component
                     {
                         currentPoke: {
                             pokemon_name: this.state.currentPoke.pokemon_name,
+                            id: '',
+                            img_src: '',
                             ball: value,
                             key: this.state.currentPoke.key,
                             abilities: this.state.currentPoke.abilities,
@@ -109,6 +117,8 @@ class App extends React.Component
                     {
                         currentPoke: {
                             pokemon_name: this.state.currentPoke.pokemon_name,
+                            id: '',
+                            img_src: '',
                             ball: this.state.currentPoke.ball,
                             key: this.state.currentPoke.key,
                             abilities: this.state.currentPoke.abilities,
@@ -126,6 +136,8 @@ class App extends React.Component
                     {
                         currentPoke: {
                             pokemon_name: this.state.currentPoke.pokemon_name,
+                            id: '',
+                            img_src: '',
                             ball: this.state.currentPoke.ball,
                             key: this.state.currentPoke.key,
                             abilities: this.state.currentPoke.abilities,
@@ -160,6 +172,8 @@ class App extends React.Component
                     currentPoke: {
                         pokemon_name: '',
                         key: '',
+                        id: '',
+                        img_src: '',
                         abilities: [],
                         ability: '',
                         nature: 'Adamant',

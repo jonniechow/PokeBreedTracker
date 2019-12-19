@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.poke_pic {
+  width: 100px;
+  height: 100px;
+}
+
+#bootstrap_cells td {
+  vertical-align: middle;
+}
